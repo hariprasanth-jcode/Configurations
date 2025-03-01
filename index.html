@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Create JSON object from form input values
+            let employee = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                salary: document.getElementById("salary").value
+            };
+
+            // Send the JSON data to the backend using Fetch API
+            fetch("/employees", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(employee)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP status " + response.status);
+                }
+                return response.json();
+            })
+            .then(data => alert("Employee saved: " + JSON.stringify(data)))
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Employee Registration</h1>
+
+    <form onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" name="salary" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

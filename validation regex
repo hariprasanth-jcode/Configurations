@@ -1,0 +1,15 @@
+String name; @Pattern(regexp="^[A-Za-z ]+$")
+String email;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+
+private String age;@Pattern(regexp = "^(1[01][0-9]|120|[1-9][0-9]?)$", message = "Age must be between 1 and 120")
+You can also use @Min(1) and @Max(120) for numeric fields.
+
+@Pattern(regexp = "^[6-9]\\d{9}$", message = "Invalid Indian phone number")
+private String phone;
+
+@Pattern(regexp = "^[1-9][0-9]{5}$", message = "Invalid Indian pincode")
+private String pincode;
+
+
+@Pattern(regexp = "^[a-zA-Z0-9\\s,.-]{5,100}$", message = "Invalid address format")
+private String address;

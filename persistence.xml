@@ -8,16 +8,14 @@
     <persistence-unit name="postgres" transaction-type="RESOURCE_LOCAL">
 
        
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        
         <properties>
-          
+            <!-- Database Configuration -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/college"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
             <property name="jakarta.persistence.jdbc.password" value="root"/>
 
-           
+            <!-- Hibernate Specific Settings -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
